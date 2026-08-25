@@ -1,4 +1,12 @@
-vim.opt.number = true
-vim.g.mapleader = "\\"
+-- 基本オプションの設定
+require('options')
 
-vim.keymap.set("n", "<leader>t", ":botright split | terminal<CR>")
+-- キーマップの設定
+require('keymaps')
+
+-- プラグインの設定
+require('plugins')
+
+-- 各種セットアップ(例 : Tree-sitter, LSPなど)
+-- require('setup.treesitter')
+-- require('setup.lspconfig')
