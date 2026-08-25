@@ -1,12 +1,23 @@
--- 基本オプションの設定
-require('options')
+require("options")
+require("keymaps")
 
--- キーマップの設定
-require('keymaps')
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
--- プラグインの設定
-require('plugins')
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable",
+		lazypath,
+	})
+end
 
--- 各種セットアップ(例 : Tree-sitter, LSPなど)
--- require('setup.treesitter')
--- require('setup.lspconfig')
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins")
+
+-- 各種セットアップ
+-- require("setup.treesitter")
+-- require("setup.lspconfig")
