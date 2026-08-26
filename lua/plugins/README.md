@@ -18,6 +18,7 @@
 - `simeji/winresizer`
 - `lewis6991/gitsigns.nvim`
 - `folke/which-key.nvim`
+- `windwp/nvim-autopairs`
 
 プラグイン固有のキーマップも spec 側ではなく [`../keymaps.lua`](../keymaps.lua) に書く（一覧は [`lua/README.md`](../README.md)）。
 
