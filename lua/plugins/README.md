@@ -14,6 +14,7 @@
 | `shellRaining/hlchunk.nvim` | カーソル位置のチャンク強調とインデントガイド |
 | `nvim-treesitter/nvim-treesitter-context` | スクロール中に関数などの見出し行を上部に固定 |
 | `rainbowhxch/accelerated-jk.nvim` | `j` / `k` を押し続けると移動が加速する |
+| `simeji/winresizer` | `<C-e>` でウィンドウリサイズモードに入る。`h` / `j` / `k` / `l` でサイズ変更、`e` でモード切替（リサイズ → 移動 → フォーカス）、`Enter` で確定 / `q` で取り消し |
 
 プラグイン固有のキーマップも spec 側ではなく [`../keymaps.lua`](../keymaps.lua) に書く（一覧は [`lua/README.md`](../README.md)）。
 
