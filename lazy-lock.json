@@ -1,5 +1,6 @@
 {
   "accelerated-jk.nvim": { "branch": "main", "commit": "8fb5dad4ccc1811766cebf16b544038aeeb7806f" },
+  "dashboard-nvim": { "branch": "master", "commit": "f787e3462c2ee2b6117b17c1aa4ddf66cb6f57fe" },
   "dropbar.nvim": { "branch": "master", "commit": "808ba31cde89aec8833e9789f5e04557cd31c9e1" },
   "hlchunk.nvim": { "branch": "main", "commit": "4ddc056e4ca45f1c7dc6aa21935df710b263b1aa" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
