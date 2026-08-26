@@ -1,3 +1,5 @@
+-- ファイルツリーを画面右側に表示
+-- キーマップはまだ書いていないので `:Neotree` から呼ぶ
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",

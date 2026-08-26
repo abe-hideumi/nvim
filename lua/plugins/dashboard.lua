@@ -1,8 +1,9 @@
+-- 起動時のスタート画面（hyper テーマ）
+-- `u` = `:Lazy update` / `c` = 設定を開く / `q` = 終了
 return {
 	"nvimdev/dashboard-nvim",
 	event = "VimEnter",
 	config = function()
-		-- 起動時のスタート画面
 		require("dashboard").setup({
 			theme = "hyper",
 			config = {
