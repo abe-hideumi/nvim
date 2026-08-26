@@ -29,7 +29,10 @@ keymap.set("n", "<leader>t", function()
 		end
 	end
 
-	vim.cmd("botright split")
+    local current_win = vim.api.nvim_get_current_win()
+    vim.api.nvim_set_current_win(current_win)
+
+    vim.cmd("belowright split")
 	vim.cmd("resize 25")
 
 	if alive then
