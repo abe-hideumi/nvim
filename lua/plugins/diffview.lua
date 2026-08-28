@@ -5,4 +5,13 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	opts = {
+		-- ファイル一覧パネルを右に置く(デフォルトは left)
+		file_panel = {
+			win_config = {
+				position = "right",
+				width = 35,
+			},
+		},
+	},
 }
