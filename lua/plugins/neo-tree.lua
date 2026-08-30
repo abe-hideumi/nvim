@@ -15,6 +15,14 @@ return {
 				-- ツリーを画面右側に出す
 				position = "right",
 			},
+
+			filesystem = {
+				filtered_items = {
+					visible = true, -- フィルター対象の項目を消さずにグレー（暗く）表示する
+					hide_dotfiles = true, -- ドットファイルを「フィルター対象」にする（これでグレー表示になります）
+					hide_gitignored = true, -- gitignore対象も「フィルター対象」にしてグレー表示する
+				},
+			},
 		})
 	end,
 }
