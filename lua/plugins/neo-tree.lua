@@ -6,7 +6,6 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
-		-- ファイルアイコン。必須ではないが無いとアイコンが出ない
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
@@ -22,6 +21,12 @@ return {
 					hide_dotfiles = true, -- ドットファイルを「フィルター対象」にする（これでグレー表示になります）
 					hide_gitignored = true, -- gitignore対象も「フィルター対象」にしてグレー表示する
 				},
+			},
+            -- インストールされているサーバーを自動で setup する
+			handlers = {
+				function(server_name)
+					require("lspconfig")[server_name].setup({})
+				end,
 			},
 		})
 	end,
