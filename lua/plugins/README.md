@@ -22,6 +22,8 @@
 
 プラグイン固有のキーマップも spec 側ではなく [`../keymaps.lua`](../keymaps.lua) に書く（一覧は [`lua/README.md`](../README.md)）。
 
+LSP サーバーごとの設定も spec 側ではなく [`../../after/lsp/`](../../after/lsp/README.md) に書く。
+
 ## プラグインの追加
 
 `<プラグイン名>.lua` を作って spec を1つ return する。

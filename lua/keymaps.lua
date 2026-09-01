@@ -50,3 +50,17 @@ local api = vim.api
 
 api.nvim_set_keymap("n", "j", "<Plug>(accelerated_jk_gj)", {})
 api.nvim_set_keymap("n", "k", "<Plug>(accelerated_jk_gk)", {})
+
+-- LSP
+-- サーバーが attach したバッファにだけ効かせたいので LspAttach で設定する
+-- K (ドキュメント表示) と gr* (grr:参照一覧, grn:リネーム, gra:コードアクション,
+-- gri:実装, grt:型定義) は Neovim 0.11+ の組み込み既定なのでここでは設定しない
+api.nvim_create_autocmd("LspAttach", {
+	group = api.nvim_create_augroup("UserLspConfig", {}),
+	callback = function(ev)
+		keymap.set("n", "gd", vim.lsp.buf.definition, {
+			buffer = ev.buf,
+			desc = "定義へジャンプ",
+		})
+	end,
+})
