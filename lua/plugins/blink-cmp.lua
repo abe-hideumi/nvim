@@ -15,8 +15,11 @@ return {
 	version = "1.*",
 
 	opts = {
-		keymap = { preset = "default" },
-
+		keymap = {
+            preset = "default",
+            -- 候補があればenterで確定する
+            ["<CR>"] = { "accept", "fallback" },
+        },
 		-- Nerd Font（HackGen NF）が入っている前提。無い環境ではアイコンが豆腐になる
 		appearance = { nerd_font_variant = "mono" },
 
