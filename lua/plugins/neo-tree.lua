@@ -22,12 +22,6 @@ return {
 					hide_gitignored = true, -- gitignore対象も「フィルター対象」にしてグレー表示する
 				},
 			},
-            -- インストールされているサーバーを自動で setup する
-			handlers = {
-				function(server_name)
-					require("lspconfig")[server_name].setup({})
-				end,
-			},
 		})
 	end,
 }

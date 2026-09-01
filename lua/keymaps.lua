@@ -1,4 +1,5 @@
 local keymap = vim.keymap
+local api = vim.api
 
 -- ウィンドウ移動
 keymap.set("n", "<C-h>", "<C-w>h", { desc = "左のウィンドウへ移動" })
@@ -9,6 +10,7 @@ keymap.set("n", "<C-l>", "<C-w>l", { desc = "右のウィンドウへ移動" })
 -- 保存・終了
 keymap.set("n", "<leader>w", ":w<CR>", { desc = "保存" })
 keymap.set("n", "<leader>q", ":q<CR>", { desc = "終了" })
+keymap.set("n", "<leader>Q", ":qa<CR>", { desc = "全ウィンドウを終了" })
 
 -- terminal モードを抜ける
 keymap.set("t", "<C-n>", [[<C-\><C-n>]], { desc = "terminal モードを抜ける" })
@@ -29,10 +31,7 @@ keymap.set("n", "<leader>t", function()
 		end
 	end
 
-    local current_win = vim.api.nvim_get_current_win()
-    vim.api.nvim_set_current_win(current_win)
-
-    vim.cmd("belowright split")
+	vim.cmd("belowright split")
 	vim.cmd("resize 25")
 
 	if alive then
@@ -44,12 +43,6 @@ keymap.set("n", "<leader>t", function()
 
 	vim.cmd("startinsert")
 end, { desc = "下にターミナルをトグル" })
-
--- accelerated-jk
-local api = vim.api
-
-api.nvim_set_keymap("n", "j", "<Plug>(accelerated_jk_gj)", {})
-api.nvim_set_keymap("n", "k", "<Plug>(accelerated_jk_gk)", {})
 
 -- LSP
 -- サーバーが attach したバッファにだけ効かせたいので LspAttach で設定する
