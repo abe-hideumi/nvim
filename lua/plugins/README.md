@@ -19,7 +19,9 @@
 - `lewis6991/gitsigns.nvim`
 - `folke/which-key.nvim`
 - `windwp/nvim-autopairs`
+- `sindrets/diffview.nvim`
 - `saghen/blink.cmp`
+- `numToStr/Comment.nvim`
 
 プラグイン固有のキーマップは spec の `keys` に書く。そのプラグインを呼ぶキーは
 そのプラグインのファイルにある、という状態にする（押すまで読み込まない遅延ロードも付いてくる）。
