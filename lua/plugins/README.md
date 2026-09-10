@@ -22,6 +22,7 @@
 - `sindrets/diffview.nvim`
 - `saghen/blink.cmp`
 - `numToStr/Comment.nvim`
+- `kylechui/nvim-surround`
 
 プラグイン固有のキーマップは spec の `keys` に書く。そのプラグインを呼ぶキーは
 そのプラグインのファイルにある、という状態にする（押すまで読み込まない遅延ロードも付いてくる）。
