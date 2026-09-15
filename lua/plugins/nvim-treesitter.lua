@@ -4,9 +4,8 @@
 -- 同梱パーサは c / lua / markdown / markdown_inline / query / vim / vimdoc の7つだけで、
 -- 本体だけではパーサを追加する手段が無い。そこを埋めるのがこのプラグイン。
 --
--- ハイライトと折りたたみは自動では有効にならない。どちらも本体側の機能で、
--- `vim.treesitter.start()` / `foldexpr` を自分で呼ぶ必要がある。ここではまだ入れていない。
--- 今のところ入れている目的は treesitter-context にパーサを供給すること。
+-- ハイライトと折りたたみ自体は本体側の機能なので、パーサが入っても自動では有効にならない。
+-- 有効化は下の autocmd でやっている。
 return {
 	"nvim-treesitter/nvim-treesitter",
 
@@ -35,6 +34,24 @@ return {
 			"tsx",
 			"typescript",
 			"yaml",
+		})
+
+		-- filetype を絞らず、パーサがあるものだけ有効にする。
+		-- 上のリストと filetype 名は一対一ではない（tsx → typescriptreact、bash → sh など）ので、
+		-- 名前を並べると必ずどちらかが古くなる。start() の成否で判定させる。
+		-- パーサが無い filetype で失敗するのは異常ではないため pcall で見送ってよい
+		-- （本体同梱の lua / markdown なども、ここで一緒に有効になる）
+		vim.api.nvim_create_autocmd("FileType", {
+			group = vim.api.nvim_create_augroup("UserTreesitter", {}),
+			callback = function()
+				if not pcall(vim.treesitter.start) then
+					return
+				end
+
+				-- 折りたたみはウィンドウ単位の設定なので、バッファに紐づく形で入れる
+				vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+				vim.wo[0][0].foldmethod = "expr"
+			end,
 		})
 	end,
 }

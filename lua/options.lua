@@ -18,6 +18,11 @@ opt.smartcase = true
 -- OSのクリップボードを使用
 opt.clipboard = "unnamedplus"
 
+-- 折りたたみは全部開いた状態でファイルを開く
+-- treesitter の foldexpr(plugins/nvim-treesitter.lua)を入れると畳める単位が細かくなり、
+-- 既定値のままだと関数が全部閉じた状態で開いてしまう
+opt.foldlevelstart = 99
+
 -- 起動引数のパスへ cwd を移す
 -- `nvim .claude` や `nvim .claude/foo.md` で起動しても cwd は起動元シェルのまま
 -- （= home）なので、ターミナルも Telescope も home を基準にしてしまう。
