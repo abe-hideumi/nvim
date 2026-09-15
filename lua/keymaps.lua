@@ -69,7 +69,7 @@ local function accessor_under_cursor()
 
 	while to < #line and line:sub(to + 1, to + 1):match("[%w_]") do
 		to = to + 1
-    end
+	end
 
 	return line:sub(from, to), line:sub(1, from - 1):match("([%w_]+)%.$")
 end
