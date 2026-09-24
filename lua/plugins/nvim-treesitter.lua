@@ -24,6 +24,7 @@ return {
 		-- 既に入っているものは何もしない。非同期なので起動は待たされない
 		require("nvim-treesitter").install({
 			"bash",
+			"cpp",
 			"javascript",
 			"jsdoc",
 			"json",
