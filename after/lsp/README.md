@@ -12,6 +12,7 @@ mason-lspconfig がやる。ここに書くのは「有効になったサーバ�
 ## 入っている設定
 
 - `lua_ls.lua`
+- `prismals.lua`
 
 何の設定かは各 `.lua` の先頭コメントに書く。この README には名前だけ並べる。
 
