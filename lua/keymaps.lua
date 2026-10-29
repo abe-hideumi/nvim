@@ -7,6 +7,10 @@ keymap.set("n", "<C-j>", "<C-w>j", { desc = "下のウィンドウへ移動" })
 keymap.set("n", "<C-k>", "<C-w>k", { desc = "上のウィンドウへ移動" })
 keymap.set("n", "<C-l>", "<C-w>l", { desc = "右のウィンドウへ移動" })
 
+-- 上下の移動、半画面
+keymap.set("n", "<C-j>", "<C-d>")
+keymap.set("n", "<C-k>", "<C-u>")
+
 -- 保存・終了
 keymap.set("n", "<leader>w", ":w<CR>", { desc = "保存" })
 keymap.set("n", "<leader>q", ":q<CR>", { desc = "終了" })
