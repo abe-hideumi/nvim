@@ -2,14 +2,14 @@ local keymap = vim.keymap
 local api = vim.api
 
 -- ウィンドウ移動
-keymap.set("n", "<C-h>", "<C-w>h", { desc = "左のウィンドウへ移動" })
-keymap.set("n", "<C-j>", "<C-w>j", { desc = "下のウィンドウへ移動" })
-keymap.set("n", "<C-k>", "<C-w>k", { desc = "上のウィンドウへ移動" })
-keymap.set("n", "<C-l>", "<C-w>l", { desc = "右のウィンドウへ移動" })
+keymap.set("n", "<leader>h", "<C-w>h", { desc = "左のウィンドウへ移動" })
+keymap.set("n", "<leader>j", "<C-w>j", { desc = "下のウィンドウへ移動" })
+keymap.set("n", "<leader>k", "<C-w>k", { desc = "上のウィンドウへ移動" })
+keymap.set("n", "<leader>l", "<C-w>l", { desc = "右のウィンドウへ移動" })
 
--- 上下の移動、半画面
-keymap.set("n", "<C-j>", "<C-d>")
-keymap.set("n", "<C-k>", "<C-u>")
+-- 上下の移動、半画面 (長押しでリピートできるよう Ctrl に割り当てる)
+keymap.set("n", "<C-j>", "<C-d>", { desc = "半画面下へスクロール" })
+keymap.set("n", "<C-k>", "<C-u>", { desc = "半画面上へスクロール" })
 
 -- 保存・終了
 keymap.set("n", "<leader>w", ":w<CR>", { desc = "保存" })
