@@ -157,3 +157,10 @@ api.nvim_create_autocmd("LspAttach", {
 		})
 	end,
 })
+
+-- カスタムショートカット
+vim.keymap.set("n", "<leader>p", function ()
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    vim.notify("Copied: " .. path)
+end, { desc = "Copy current file path" }) 
