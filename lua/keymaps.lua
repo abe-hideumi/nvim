@@ -8,8 +8,8 @@ keymap.set("n", "<leader>k", "<C-w>k", { desc = "上のウィンドウへ移動"
 keymap.set("n", "<leader>l", "<C-w>l", { desc = "右のウィンドウへ移動" })
 
 -- 上下の移動、半画面 (長押しでリピートできるよう Ctrl に割り当てる)
-keymap.set("n", "<C-j>", "<C-d>", { desc = "半画面下へスクロール" })
-keymap.set("n", "<C-k>", "<C-u>", { desc = "半画面上へスクロール" })
+keymap.set("n", "<S-d>", "<C-d>", { desc = "半画面下へスクロール" })
+keymap.set("n", "<S-u>", "<C-u>", { desc = "半画面上へスクロール" })
 
 -- 保存・終了
 keymap.set("n", "<leader>w", ":w<CR>", { desc = "保存" })
@@ -18,6 +18,15 @@ keymap.set("n", "<leader>Q", ":qa<CR>", { desc = "全ウィンドウを終了" }
 
 -- terminal モードを抜ける
 keymap.set("t", "<C-n>", [[<C-\><C-n>]], { desc = "terminal モードを抜ける" })
+
+-- space → r でレビューモードに入る
+vim.keymap.set("n", "<leader>r", function()
+  if next(require("diffview.lib").views) then
+    vim.cmd("DiffviewClose")
+  else
+    vim.cmd("DiffviewOpen origin/HEAD...HEAD --imply-local")
+  end
+end, { desc = "Toggle Review Diff" })
 
 -- 下にターミナルをトグルで開く
 local term_buf = nil
