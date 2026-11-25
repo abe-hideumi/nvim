@@ -124,6 +124,46 @@ api.nvim_create_user_command("SwapClean", function()
 	vim.notify(("スワップファイルを %d 個削除した: %s"):format(#removed, table.concat(removed, ", ")))
 end, { desc = "残骸スワップファイルを掃除" })
 
+-- トラックパッド・マウスでカーソルの無いウィンドウをスクロールしても、diff の相手側を追従させる。
+--
+-- 'scrollbind' はカーソルのあるウィンドウが動いたときにしか相手を動かさないので、
+-- ポインタの下にある（カーソルの無い）側をホイールで動かすと、そちらだけがずれる。
+-- キーボードでは常にカーソル側が動くので起きない。
+-- スクロールされたウィンドウの中で 1 行スクロールして戻し、nvim 本来の連動で相手を揃える。
+-- （:syncbind は diff の行の対応を見ずに揃えるので、追加・削除行のぶん左右がずれる）
+local syncing = false
+
+api.nvim_create_autocmd("WinScrolled", {
+	group = api.nvim_create_augroup("UserDiffScrollSync", {}),
+	callback = function()
+		-- :syncbind で相手側が動くと WinScrolled がもう一度来るので、その分は無視する
+		if syncing then
+			return
+		end
+
+		local current = api.nvim_get_current_win()
+
+		for key in pairs(vim.v.event) do
+			local win = tonumber(key)
+			local scrolled_elsewhere = win ~= nil and win ~= current and api.nvim_win_is_valid(win)
+
+			if scrolled_elsewhere and vim.wo[win].diff and vim.wo[win].scrollbind then
+				syncing = true
+				api.nvim_win_call(win, function()
+					-- 先頭では <C-y> が効かないので、下げてから戻す。それ以外は上げてから戻す
+					local at_top = vim.fn.line("w0") == 1
+					if at_top then
+						vim.cmd("normal! \x05\x19")
+					else
+						vim.cmd("normal! \x19\x05")
+					end
+				end)
+				syncing = false
+			end
+		end
+	end,
+})
+
 api.nvim_create_autocmd("VimEnter", {
 	group = api.nvim_create_augroup("UserSwapClean", {}),
 	callback = function()
